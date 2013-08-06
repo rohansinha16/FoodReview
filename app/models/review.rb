@@ -7,7 +7,7 @@ class Review < ActiveRecord::Base
   validate :no_repeating_review
 
   def no_repeating_review
-    foods = Review.where(:user_id => self.user_id, :item_id => self.restaurant_id)
+    foods = Review.where(:user_id => self.user_id, :item_id => self.item_id)
     if foods.empty? == false
       errors.add(:already_added, ": You have already reviewed this item.")
     end

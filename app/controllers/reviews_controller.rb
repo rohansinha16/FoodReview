@@ -43,8 +43,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(params[:review])
 
     respond_to do |format|
-      if @review.errors.any? 
-        @review.save
+      if @review.save
         format.html { redirect_to @review, notice: 'Review was successfully created.' }
         format.json { render json: @review, status: :created, location: @review }
       else

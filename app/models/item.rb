@@ -6,7 +6,7 @@ class Item < ActiveRecord::Base
   validate :no_repeating_food
 
   def no_repeating_food
-    foods = Item.where(:name => self.name, :restaurant_id => self.restaurant_id)
+    foods = Item.where(:name => self.name, :restaurant => self.restaurant)
     if foods.empty? == false
       errors.add(:already_added, ": This item is already in the list.")
     end
